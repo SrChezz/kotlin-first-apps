@@ -9,12 +9,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.srchezz.androidmaster.firstapp.FirstAppActivity
 import com.srchezz.androidmaster.imccalculator.ImcCalculatorActivity
+import com.srchezz.androidmaster.settings.SettingsActivity
+import com.srchezz.androidmaster.superheroapp.SuperHeroListActivity
 import com.srchezz.androidmaster.todoapp.TodoActivity
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_menu)
         val btnSaludApp = findViewById<Button>(R.id.btnSaludApp)
         btnSaludApp.setOnClickListener{ navigateToSaludApp() }
@@ -22,6 +23,15 @@ class MenuActivity : AppCompatActivity() {
         btnImcApp.setOnClickListener{ navigateToImcApp() }
         val btnTODO = findViewById<Button>(R.id.btnTODO)
         btnTODO.setOnClickListener{ navigateTodoApp() }
+        val btnSuperHero = findViewById<Button>(R.id.btnSuperhero)
+        btnSuperHero.setOnClickListener { navigateToSuperheroApp() }
+        val btnSettings = findViewById<Button>(R.id.btnSettings)
+        btnSettings.setOnClickListener { navigateToSettings() }
+    }
+
+    private fun navigateToSettings() {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateTodoApp() {
@@ -36,6 +46,11 @@ class MenuActivity : AppCompatActivity() {
 
     private fun navigateToSaludApp() {
         val intent = Intent(this, FirstAppActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun navigateToSuperheroApp() {
+        val intent = Intent(this, SuperHeroListActivity::class.java)
         startActivity(intent)
     }
 }
